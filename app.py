@@ -2,6 +2,8 @@ import os
 import requests
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
@@ -13,9 +15,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Serve static files (HTML, JS, CSS)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Serve the website at the root URL
 @app.get("/")
 def home():
-    return {"message": "Backend is running"}
+    return FileResponse("static/index.html")
 
 # -------------------------
 # 1) Find purchase ID by PO number

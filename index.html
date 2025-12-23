@@ -47,8 +47,8 @@ async function searchPO() {
     try {
         // Step 1: get purchase ID
         const orderRes = await fetch(
-  `https://purchase-order-backend-2.onrender.com?po_number=${po}`
-	);
+  `https://purchase-order-backend-2.onrender.com/orders?po_number=${po}`
+);
         const orderData = await orderRes.json();
 
         if (!orderData.purchase_id) {
@@ -91,3 +91,4 @@ async function searchPO() {
 </body>
 
 </html>
+

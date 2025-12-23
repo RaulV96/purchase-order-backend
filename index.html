@@ -47,7 +47,7 @@ async function searchPO() {
     try {
         // Step 1: get purchase ID
         const orderRes = await fetch(
-  `https://purchase-order-backend-12jf.onrender.com/orders?po_number=${po}`
+  `https://purchase-order-backend-2.onrender.com?po_number=${po}`
 	);
         const orderData = await orderRes.json();
 
@@ -58,7 +58,7 @@ async function searchPO() {
 
         // Step 2: get order details
         const detailsRes = await fetch(
-            `https://purchase-order-backend-12jf.onrender.com/order-details?purchase_id=${orderData.purchase_id}`
+            `https://purchase-order-backend-2.onrender.com/order-details?purchase_id=${orderData.purchase_id}`
         );
         const items = await detailsRes.json();
 
@@ -89,4 +89,5 @@ async function searchPO() {
 </script>
 
 </body>
+
 </html>
